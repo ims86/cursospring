@@ -1,5 +1,7 @@
 package com.ims.cursospring.domain;
 
+import net.minidev.json.annotate.JsonIgnore;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import java.io.Serializable;
@@ -8,8 +10,10 @@ import java.util.Objects;
 @Entity
 public class PedidoItem implements Serializable {
 
+    @JsonIgnore
     @EmbeddedId
     private PedidoItemPK id = new PedidoItemPK();
+
     private Double desconto;
     private Integer quantidade;
     private Double preco;
@@ -24,6 +28,7 @@ public class PedidoItem implements Serializable {
         this.preco = preco;
     }
 
+    @JsonIgnore
     public Pedido getPedido() {
         return id.getPedido();
     }

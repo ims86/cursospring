@@ -1,5 +1,6 @@
 package com.ims.cursospring.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.ims.cursospring.domain.enums.StatusPagamento;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ public abstract class Pagamento implements Serializable {
     private Integer id;
     private Integer status;
 
+    @JsonBackReference
     @OneToOne
     @JoinColumn(name = "pedido_id")
     @MapsId

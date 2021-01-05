@@ -1,6 +1,7 @@
 package com.ims.cursospring.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -24,6 +25,7 @@ public class Produto implements Serializable {
     //Acima mapeamento da lista de categorias informando a tabela que junta elas
     private List<Categoria> categorias = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "id.produto")
     private Set<PedidoItem> pedidoItens = new HashSet<>();
 
@@ -36,6 +38,7 @@ public class Produto implements Serializable {
         this.preco = preco;
     }
 
+    @JsonIgnore
     public List<Pedido> getPedidos(){
         List<Pedido> listaPedidos = new ArrayList<>();
         for(PedidoItem x : pedidoItens){
