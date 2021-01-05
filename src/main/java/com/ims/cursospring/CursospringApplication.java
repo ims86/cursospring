@@ -1,8 +1,12 @@
 package com.ims.cursospring;
 
 import com.ims.cursospring.domain.Categoria;
+import com.ims.cursospring.domain.Cidade;
+import com.ims.cursospring.domain.Estado;
 import com.ims.cursospring.domain.Produto;
 import com.ims.cursospring.repositories.CategoriaRepository;
+import com.ims.cursospring.repositories.CidadeRepository;
+import com.ims.cursospring.repositories.EstadoRepository;
 import com.ims.cursospring.repositories.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -19,6 +23,13 @@ public class CursospringApplication implements CommandLineRunner {
 
 	@Autowired
 	ProdutoRepository produtoRepository;
+
+	@Autowired
+	EstadoRepository estadoRepository;
+
+	@Autowired
+	CidadeRepository cidadeRepository;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(CursospringApplication.class, args);
@@ -49,5 +60,21 @@ public class CursospringApplication implements CommandLineRunner {
 		categoriaRepository.saveAll(Arrays.asList(cat1, cat2));
 		produtoRepository.saveAll(Arrays.asList(prod1, prod2, prod3));
 
+		//Cria as UFs
+		Estado uf1 = new Estado(null, "SC");
+		Estado uf2 = new Estado(null, "RS");
+
+		//Cria as cidades
+		Cidade cid1 = new Cidade(null, "Florianópolis", uf1);
+		Cidade cid2 = new Cidade(null, "Pelotas", uf2);
+		Cidade cid3 = new Cidade(null, "Capão do Leão", uf2);
+
+		//Relaciona as cidades com as uf
+		uf1.getCidades().addAll(Arrays.asList(cid1));
+		uf2.getCidades().addAll(Arrays.asList(cid2, cid3));
+
+		//Insere os Estados e as Cidades no H2
+		estadoRepository.saveAll(Arrays.asList(uf1, uf2));
+		cidadeRepository.saveAll(Arrays.asList(cid1, cid2, cid3));
 	}
 }
