@@ -39,6 +39,9 @@ public class CursospringApplication implements CommandLineRunner {
 	@Autowired
 	PagamentoRepository pagamentoRepository;
 
+	@Autowired
+	PedidoItemRepository pedidoItemRepository;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(CursospringApplication.class, args);
@@ -120,6 +123,20 @@ public class CursospringApplication implements CommandLineRunner {
 
 		pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
 		pagamentoRepository.saveAll(Arrays.asList(pagt1, pagt2));
+
+		//Mock pedidoItem
+		PedidoItem pi1 = new PedidoItem(ped1, prod1, 0.00, 1, 2000.00);
+		PedidoItem pi2 = new PedidoItem(ped1, prod3, 50.00, 1, 20.00);
+		PedidoItem pi3 = new PedidoItem(ped2, prod2, 100.00, 1, 250.00);
+
+		ped1.getPedidoItens().addAll(Arrays.asList(pi1, pi2));
+		ped2.getPedidoItens().addAll(Arrays.asList(pi3));
+
+		prod1.getPedidoItens().addAll(Arrays.asList(pi1));
+		prod2.getPedidoItens().addAll(Arrays.asList(pi3));
+		prod3.getPedidoItens().addAll(Arrays.asList(pi2));
+
+		pedidoItemRepository.saveAll(Arrays.asList(pi1, pi2, pi3));
 
 	}
 }
