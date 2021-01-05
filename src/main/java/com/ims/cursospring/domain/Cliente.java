@@ -2,12 +2,11 @@ package com.ims.cursospring.domain;
 
 import com.ims.cursospring.domain.enums.TipoCliente;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.*;
 
+@Entity
 public class Cliente implements Serializable {
 
     @Id
@@ -18,9 +17,12 @@ public class Cliente implements Serializable {
     private String cpfOrCnpj;
     private Integer tipoCliente;
 
+    @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos = new ArrayList<>();
 
     //Conjunto de strings para armazenar os telefones, SET não permite repetição de dados
+    @ElementCollection
+    @CollectionTable(name = "TELEFONE")
     private Set<String> telefones = new HashSet<>();
 
     public Cliente() {
