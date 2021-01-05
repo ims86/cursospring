@@ -1,5 +1,7 @@
 package com.ims.cursospring.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ public class Produto implements Serializable {
     private String nome;
     private Double preco;
 
+    @JsonBackReference //Add para corrigir referencia ciclica ao buscar categoria
     @ManyToMany
     @JoinTable(
             name="PRODUTO_CATEGORIA",

@@ -1,5 +1,7 @@
 package com.ims.cursospring.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ public class Categoria implements Serializable {
     private Integer id;
     private String nome;
 
+    @JsonManagedReference //Add para corrigir referencia ciclica ao buscar categoria
     @ManyToMany(mappedBy = "categorias")
     //Acima só informa o mapeamento feito no produto para não refazer o cod
     private List<Produto> produtos = new ArrayList<>();
