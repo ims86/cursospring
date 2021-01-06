@@ -1,6 +1,7 @@
 package com.ims.cursospring.services;
 
 import com.ims.cursospring.domain.Categoria;
+import com.ims.cursospring.domain.Cliente;
 import com.ims.cursospring.dto.CategoriaDTO;
 import com.ims.cursospring.repositories.CategoriaRepository;
 import com.ims.cursospring.services.exceptions.DataIntegrityException;
@@ -30,7 +31,6 @@ public class CategoriaService {
                         Categoria.class.getName()));
 
     }
-
     public List<Categoria> findAll(){
         return categoriaRepository.findAll();
     }
@@ -46,6 +46,8 @@ public class CategoriaService {
 
     public Categoria update(Categoria categoria){
         findById(categoria.getId());
+        Categoria cat = findById(categoria.getId());
+        updateData(cat, categoria);
         return categoriaRepository.save(categoria);
     }
 
@@ -60,5 +62,9 @@ public class CategoriaService {
 
     public Categoria fromDTO(CategoriaDTO categoriaDTO){
         return new Categoria(categoriaDTO.getId(), categoriaDTO.getNome());
+    }
+
+    private void updateData(Categoria CategoriaBD, Categoria categoria){
+        CategoriaBD.setNome(categoria.getNome());
     }
 }

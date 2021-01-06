@@ -19,7 +19,7 @@ public class Cliente implements Serializable {
     private String cpfOrCnpj;
     private Integer tipoCliente;
 
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<Endereco> enderecos = new ArrayList<>();
 
     //Conjunto de strings para armazenar os telefones, SET não permite repetição de dados
@@ -39,7 +39,7 @@ public class Cliente implements Serializable {
         this.nome = nome;
         this.email = email;
         this.cpfOrCnpj = cpfOrCnpj;
-        this.tipoCliente = tipoCliente.getCod();
+        this.tipoCliente = tipoCliente == null ? null : tipoCliente.getCod();
     }
 
     public Integer getId() {
