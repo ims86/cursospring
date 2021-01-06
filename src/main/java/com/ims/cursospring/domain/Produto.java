@@ -1,6 +1,5 @@
 package com.ims.cursospring.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -9,6 +8,7 @@ import java.util.*;
 
 @Entity
 public class Produto implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +16,7 @@ public class Produto implements Serializable {
     private String nome;
     private Double preco;
 
-    @JsonBackReference //Add para corrigir referencia ciclica ao buscar categoria
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name="PRODUTO_CATEGORIA",

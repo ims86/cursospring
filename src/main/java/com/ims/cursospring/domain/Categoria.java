@@ -10,13 +10,12 @@ import java.util.Objects;
 
 @Entity
 public class Categoria implements Serializable {
-
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
 
-    @JsonManagedReference //Add para corrigir referencia ciclica ao buscar categoria
     @ManyToMany(mappedBy = "categorias")
     //Acima só informa o mapeamento feito no produto para não refazer o cod
     private List<Produto> produtos = new ArrayList<>();

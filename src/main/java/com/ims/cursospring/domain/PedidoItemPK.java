@@ -8,6 +8,7 @@ import java.util.Objects;
 
 @Embeddable
 public class PedidoItemPK implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @ManyToOne
     @JoinColumn(name = "pedido_id")

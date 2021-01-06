@@ -8,6 +8,7 @@ import java.util.Date;
 
 @Entity
 public class PagamentoBoleto extends Pagamento{
+    private static final long serialVersionUID = 1L;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dtPagamento;

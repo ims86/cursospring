@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 
 @Entity
 public class PagamentoCartao extends Pagamento{
+    private static final long serialVersionUID = 1L;
 
     private Integer numParcelas;
 

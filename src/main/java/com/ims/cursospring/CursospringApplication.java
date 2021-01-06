@@ -54,6 +54,17 @@ public class CursospringApplication implements CommandLineRunner {
 		//Mock categorias
 		Categoria cat1 = new Categoria(null, "Informática");
 		Categoria cat2 = new Categoria(null, "Escritório");
+		Categoria cat3 = new Categoria(null, "Eletrônicos");
+		Categoria cat4 = new Categoria(null, "Periféricos");
+		Categoria cat5 = new Categoria(null, "Ferramentas");
+		Categoria cat6 = new Categoria(null, "Áudio");
+		Categoria cat7 = new Categoria(null, "Video");
+		Categoria cat8 = new Categoria(null, "Cabos");
+		Categoria cat9 = new Categoria(null, "Conectores");
+		Categoria cat10 = new Categoria(null, "Cadeiras");
+		Categoria cat11 = new Categoria(null, "Mesas");
+		Categoria cat12 = new Categoria(null, "Prateleiras");
+
 
 		//Mock produtos
 		Produto prod1 = new Produto(null, "Note", 2000.00);
@@ -70,7 +81,7 @@ public class CursospringApplication implements CommandLineRunner {
 		prod3.getCategorias().addAll(Arrays.asList(cat1));
 
 		//Insere as categorias e os produtos no H2
-		categoriaRepository.saveAll(Arrays.asList(cat1, cat2));
+		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6, cat7, cat8, cat9, cat10, cat11, cat12));
 		produtoRepository.saveAll(Arrays.asList(prod1, prod2, prod3));
 
 		//Mock UFs
