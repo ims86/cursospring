@@ -68,21 +68,47 @@ public class CursospringApplication implements CommandLineRunner {
 
 		//Mock produtos
 		Produto prod1 = new Produto(null, "Note", 2000.00);
-		Produto prod2 = new Produto(null, "Impressora", 250.00);
+		Produto prod2 = new Produto(null, "Impressora", 550.00);
 		Produto prod3 = new Produto(null, "Mouse", 20.00);
+		Produto prod4 = new Produto(null, "Teclado", 40.00);
+		Produto prod5 = new Produto(null, "Cabo RJ45", 1.00);
+		Produto prod6 = new Produto(null, "LED", 1.00);
+		Produto prod7 = new Produto(null, "Cageira", 300.00);
+		Produto prod8 = new Produto(null, "Mesa escritório", 450.00);
+		Produto prod9 = new Produto(null, "Conector RJ45", 2.00);
+		Produto prod10 = new Produto(null, "Prateleira 40", 30.00);
+		Produto prod11 = new Produto(null, "Prateleira 60", 40.00);
+		Produto prod12 = new Produto(null, "Prateleira 100", 60.00);
 
 		//Relaciona as categorias com os produtos
-		cat1.getProdutos().addAll(Arrays.asList(prod1, prod2, prod3));
-		cat2.getProdutos().addAll(Arrays.asList(prod2));
+		cat1.getProdutos().addAll(Arrays.asList(prod1, prod2, prod3, prod4, prod5, prod9));
+		cat2.getProdutos().addAll(Arrays.asList(prod2, prod7, prod8, prod10, prod11, prod12));
+		cat3.getProdutos().addAll(Arrays.asList(prod6));
+		cat4.getProdutos().addAll(Arrays.asList(prod3, prod4));
+		cat8.getProdutos().addAll(Arrays.asList(prod5));
+		cat9.getProdutos().addAll(Arrays.asList(prod9));
+		cat10.getProdutos().addAll(Arrays.asList(prod7));
+		cat11.getProdutos().addAll(Arrays.asList(prod8));
+		cat12.getProdutos().addAll(Arrays.asList(prod10, prod11, prod12));
+
 
 		//Relaciona os produtos com as categorias
 		prod1.getCategorias().addAll(Arrays.asList(cat1));
 		prod2.getCategorias().addAll(Arrays.asList(cat1, cat2));
-		prod3.getCategorias().addAll(Arrays.asList(cat1));
+		prod3.getCategorias().addAll(Arrays.asList(cat1, cat4));
+		prod4.getCategorias().addAll(Arrays.asList(cat1));
+		prod5.getCategorias().addAll(Arrays.asList(cat1, cat8));
+		prod6.getCategorias().addAll(Arrays.asList(cat3));
+		prod7.getCategorias().addAll(Arrays.asList(cat2, cat10));
+		prod8.getCategorias().addAll(Arrays.asList(cat2, cat11));
+		prod9.getCategorias().addAll(Arrays.asList(cat1, cat9));
+		prod10.getCategorias().addAll(Arrays.asList(cat2, cat12));
+		prod11.getCategorias().addAll(Arrays.asList(cat2, cat12));
+		prod12.getCategorias().addAll(Arrays.asList(cat2, cat12));
 
 		//Insere as categorias e os produtos no H2
 		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6, cat7, cat8, cat9, cat10, cat11, cat12));
-		produtoRepository.saveAll(Arrays.asList(prod1, prod2, prod3));
+		produtoRepository.saveAll(Arrays.asList(prod1, prod2, prod3, prod4, prod5, prod6, prod7, prod8, prod9, prod10, prod11, prod12));
 
 		//Mock UFs
 		Estado uf1 = new Estado(null, "SC");

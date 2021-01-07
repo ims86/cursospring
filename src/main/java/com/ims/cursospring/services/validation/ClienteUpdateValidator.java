@@ -36,10 +36,10 @@ public class ClienteUpdateValidator implements ConstraintValidator<ClienteUpdate
         List<FieldMessageError> list = new ArrayList<>();
 
         // inclua os testes aqui, inserindo erros na lista
-        Cliente aux = clienteRepository.findByEmal(objDto.getEmail());
-        if(aux != null && !aux.getId().equals(Integer.parseInt(map.get("id")))){
-            list.add(new FieldMessageError("email","Email já cadastrado"));
-        }
+//        Cliente aux = clienteRepository.findByEmal(objDto.getEmail());
+//        if(aux != null && !aux.getId().equals(Integer.parseInt(map.get("id")))){
+//            list.add(new FieldMessageError("email","Email já cadastrado"));
+//        }
 
         for (FieldMessageError e : list) {
             context.disableDefaultConstraintViolation();
